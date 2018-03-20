@@ -1,4 +1,11 @@
-# visual-mongo
+# MongoVisual
+
+<p align="center">
+    <img width="100" <img src="http://p39p1kvxn.bkt.clouddn.com/logo.svg" alt="logo">>
+</p>
+
+
+![预览图](http://p39p1kvxn.bkt.clouddn.com/mongovisual.png)
 
 > An electron-vue project
 
