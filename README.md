@@ -1,7 +1,5 @@
-# MongoVisual
-
 <p align="center">
-    <img width="100" <img src="http://p39p1kvxn.bkt.clouddn.com/logo.svg" alt="logo">>
+    <img width="180" <img src="http://p39p1kvxn.bkt.clouddn.com/logo.svg" alt="logo">>
 </p>
 
 
