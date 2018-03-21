@@ -12,7 +12,17 @@ const http = axios.create({
 //   err => err
 // })
 http.interceptors.response.use(
-  res => res.data
+  res => {
+    if (res.data.code === 'ok') {
+      return res.data.data
+    } else if (res.data.code === 'no') {
+      throw new Error(res.data.message)
+    }
+  },
+
+  err => {
+    throw new Error(err)
+  }
 )
 
 export default http

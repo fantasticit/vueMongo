@@ -7,13 +7,20 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'landing-page',
+      name: 'Layout',
       component: require('@/components/layout').default,
-      children: [{
-        path: 'db/:db/collection/:collection',
-        name: 'collection',
-        component: require('@/components/collection').default,
-      }]
+      children: [
+        {
+          path: 'db/:db/collection/:collection',
+          name: 'Collection',
+          component: require('@/components/collection/').default,
+        },
+        {
+          path: 'db/:db/collection/:collection/document/:document',
+          name: 'Document',
+          component: require('@/components/document/index.vue').default,
+        },
+      ]
     },
     {
       path: '*',

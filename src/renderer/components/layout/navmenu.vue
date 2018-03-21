@@ -1,13 +1,13 @@
 <template>
-  <el-menu>
+  <el-menu @select="handleSelect">
     <el-submenu
       :index="data.name">
       <template slot="title">
         <icon type="database" />
         <span slot="title">{{ data.name }}</span>
       </template>
-      <el-menu-item v-for="(item, i) in data.children" :key="i" :index="data.name + '-' + i" @click="setCollection(item)">
-        <icon type="page" />
+      <el-menu-item v-for="(item, i) in data.children" :key="i" :index="'-' + i">
+        <icon type="table" />
         <span>{{ item.name }}</span>
       </el-menu-item>
     </el-submenu>
@@ -36,12 +36,16 @@ export default {
       this.visible = !this.visible
     },
 
-    setCollection(collection) {
-      if (!collection.parent) {
-        return
-      }
+    handleSelect(key, keyPath) {
+      keyPath = keyPath[1].substr(1)
 
-      this.$router.replace(`/db/${collection.parent}/collection/${collection.name}`)
+      if (this.data && this.data.children && this.data.children[keyPath]) {
+        this.setCollection(this.data.children[keyPath])
+      }
+    },
+
+    setCollection(collection) {
+      this.$router.push(`/db/${collection.parent}/collection/${collection.name}`)
     }
   },
 }

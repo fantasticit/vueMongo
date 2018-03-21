@@ -11,13 +11,18 @@ class Connect {
     return data
   }
 
-  static async findAll(db, collection, page, pageSize) {
-    const data = await http({
-      method: 'get',
-      url: `/db/${db}/collection/${collection}?page=${page}&pageSize=${pageSize}`,
-    })
-  
-    return data
+  static async findAll(db, collection, query, page, pageSize) {
+    try {
+      const data = await http({
+        method: 'get',
+        url: `/db/${db}/collection/${collection}?query=${query}&page=${page}&pageSize=${pageSize}`,
+      })
+    
+      return data
+    } catch (err) {
+      console.log(err)
+      throw new Error(err)
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <pre>{{ this.$router.currentRoute.path }}</pre>
     <router-view class="wrapper"></router-view>
   </div>
 </template>
@@ -42,7 +43,7 @@ body {
   box-sizing: border-box;
 
   ::-webkit-scrollbar {
-    width: 0px;
+    width: 5px;
     background: hsla(0, 0, 100%, .6);
   }
 

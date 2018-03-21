@@ -37,23 +37,25 @@ export default {
 <style lang="scss" scoped>
 div.container {
   position: relative;
-  padding-left: 200px;
-  transform: all .2s ease .1s;
+  padding-left: 240px;
+  transition: all ease .3s;
 
   nav {
     position: absolute;
     left: 0;
     top: 0;
-    width: 200px;
+    width: 240px;
     height: 100%;
     background: rgb(73, 80, 96);
     color: #fff;
+    overflow: auto;
 
     transition: all ease .3s;
   }
 
   nav.is-collapse {
     transform: translateX(-100%);
+    transition-delay: .1s;
   }
 
   main {
@@ -64,5 +66,6 @@ div.container {
 
 div.container.is-collapse {
   padding-left: 0;
+  transition-delay: .1s;
 }
 </style>

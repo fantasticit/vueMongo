@@ -7,9 +7,8 @@
     </div>
     <ul>
       <li @click="toggleModal">
-        <div>
-          <icon type="connection" />
-        </div>
+        <icon type="connection" />
+        <span>连接</span>
       </li>
     </ul>
     <el-dialog title="新建连接" :visible.sync="showModal">
@@ -19,6 +18,14 @@
         </el-form-item>
         <el-form-item label="连接地址" prop="url">
           <el-input v-model="ruleForm.url"></el-input>
+        </el-form-item>
+
+        <el-form-item label="断线重连">
+          <el-switch
+            v-model="isReconnect"
+            active-color="#13ce66"
+            inactive-color="#ff4949">
+          </el-switch>
         </el-form-item>
       </el-form>
       <div slot="footer">
@@ -49,7 +56,8 @@ export default {
         url: [
           { required: true, message: '请输入连接地址', trigger: 'blur' },
         ],
-      }
+      },
+      isReconnect: false, // 重新连接
     }
   },
 
@@ -80,9 +88,12 @@ export default {
     },
 
     addConnect() {
-      this.$store.dispatch('addConnect', this.ruleForm)
+      this.$store.dispatch('addConnect', {
+        connect: this.ruleForm,
+        isReconnect: this.isReconnect
+      })
         .then(_ => this.showModal = false)
-        .catch(err => console.log(err))
+        .catch(err => this.$message.error(err.message))
     },
   },
 }
@@ -117,9 +128,15 @@ header {
     cursor: pointer;
     justify-content: center;
     align-items: center;
+    font-size: 16px;
 
-    i {
-      font-size: 20px;
+    svg {
+      font-size: 20px !important;
+    }
+
+    span {
+      margin-left: 2px;
+      transform: translateY(-.5px);
     }
   }
 }

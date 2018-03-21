@@ -1,17 +1,17 @@
 <template>
-  <li @click="toggle">
+  <li @click.stop="toggle">
     <div class="header">
       <div class="info">
         <span>{{ index }}</span>
       </div>
       <div class="operator">
-        <el-button size="mini" type="primary">详情</el-button>
-        <el-button size="mini" type="info">编辑</el-button>
-        <el-button size="mini" type="danger">删除</el-button>
+        <el-button @click.stop="toggle" size="mini" type="primary">详情</el-button>
+        <el-button @click.stop="edit" size="mini" type="info">编辑</el-button>
+        <el-button @click.stop="deleteDocument" size="mini" type="danger">删除</el-button>
       </div>
     </div>
     <div class="body" :style="{'height': height}" ref="code">
-      <pre>{{ data }}</pre>
+      <pre><code>{{ data }}</code></pre>
     </div>
   </li>
 </template>
@@ -41,12 +41,10 @@ export default {
   },
 
   mounted() {
-    console.log('mount');
     this.highlight();
   },
 
   updated() {
-    console.log('update');
     this.highlight();
   },
 
@@ -55,15 +53,35 @@ export default {
       this.height = this.height === '100px' ? 'auto' : '100px'
     },
 
+    edit() {
+      const id = this.data._id
+
+      if (!id) {
+        return
+      } else {
+        const { db, collection } = this.$route.params;
+        console.log(`/db/${db}/collection/${collection}/document/${id}`);
+        this.$router.push(`/db/${db}/collection/${collection}/document/${id}`)
+      }
+    },
+
+    deleteDocument() {
+      console.log('删除')
+    },
+
     highlight() {
       setTimeout(_ => {
         let el = this.$refs['code'];
+        if (!el) {
+          return
+        }
+
         let blocks = el.querySelectorAll('pre code');
         blocks.forEach((block) => {
           Hljs.highlightBlock(block);
         });
       }, 0)
-    }
+    },
   },
 }
 </script>
