@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="180" src="http://p39p1kvxn.bkt.clouddn.com/logo.svg" alt="logo">
+    <img width="180" src="http://p39p1kvxn.bkt.clouddn.com/%E9%80%89%E5%8C%BA_028.png" alt="logo">
 </p>
 
 <h2 align="center">MongoVisual</h2>
