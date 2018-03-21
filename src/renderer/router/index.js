@@ -8,7 +8,7 @@ export default new Router({
     {
       path: '/',
       name: 'landing-page',
-      component: require('@/components/LandingPage').default,
+      component: require('@/components/layout').default,
       children: [{
         path: 'db/:db/collection/:collection',
         name: 'collection',

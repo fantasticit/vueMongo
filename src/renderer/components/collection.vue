@@ -8,7 +8,12 @@
       </el-breadcrumb>
     </div>
     <ul ref="content" v-loading="loading">
-      <DocItem v-for="(item, i) in data" :key="i" :data="item" />
+      <DocItem
+        v-for="(item, i) in data"
+        :key="i"
+        :index="page > 1 ? ((page - 1) * pageSize) + i + 1 : i + 1" 
+        :data="item"
+      />
     </ul>
     <div class="paginator">
       <el-pagination
@@ -104,17 +109,19 @@ div.breadcrumb, div.paginator {
   align-items: center;
 }
 
+div.breadcrumb {
+  margin: 0 0 15px 0;
+}
+
 div.paginator {
   height: 40px;
   justify-content: flex-end;
-  padding: 0 1rem 0 0;
 }
 
 ul {
   width: 100%;
-  height: calc(100% - 70px);
+  height: calc(100% - 100px);
   overflow: auto;
-  padding: 0 1rem 0 0;
 }
 </style>
 

@@ -42,15 +42,16 @@ body {
   box-sizing: border-box;
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 0px;
+    background: hsla(0, 0, 100%, .6);
   }
+
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 0px;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    background:rgba(95, 95, 95, 0.4);
   }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <header>
-    <div class="collapse-menu">
+    <div class="collapse-menu" @click="toggleCollapse">
       <span>
-        <icon type="menu" />
+        <icon :type="isCollapse ? 'menu' : 'menu-retract'" />
       </span>
     </div>
     <ul>
@@ -36,6 +36,7 @@ export default {
   name: 'Header',
   data() {
     return {
+      isCollapse: false,
       showModal: false,
       ruleForm: {
         name: 'elapse',
@@ -53,6 +54,11 @@ export default {
   },
 
   methods: {
+    toggleCollapse() {
+      this.isCollapse = !this.isCollapse;
+      this.$emit('toggleCollapse');
+    },
+
     toggleModal() {
       this.showModal = !this.showModal;
     },
@@ -93,7 +99,7 @@ header {
   font-size: 1.4em;
 
   .collapse-menu {
-    padding: 10px;
+    padding: 1rem;
     cursor: pointer;
   }
 
@@ -102,11 +108,11 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding: 0 1rem;
   }
 
   li {
     height: 100%;
-    padding: 2rem;
     display: flex;
     cursor: pointer;
     justify-content: center;
@@ -118,4 +124,3 @@ header {
   }
 }
 </style>
-
