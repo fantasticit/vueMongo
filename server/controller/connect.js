@@ -13,7 +13,7 @@ function findAll(collection, skip, limit) {
       if (err) {
         reject(err)
       } else {
-        setTimeout(_ => resolve({ docs, total }), 3000)
+        setTimeout(_ => resolve({ docs, total }), 1200)
       }
     })
   })

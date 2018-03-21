@@ -11,6 +11,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const resolve = url => {
+  return path.resolve(__dirname, '../', url)
+}
+
 const extractSass = new ExtractTextPlugin({
   filename: "css/[name].css"
 });
@@ -74,13 +78,20 @@ let rendererConfig = {
         }
       },
       {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: [resolve('src/renderer/components/icon')],
+        options: {
+          symbolId: '[name]'
+        }
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        use: {
-          loader: 'url-loader',
-          query: {
-            limit: 10000,
-            name: 'imgs/[name]--[folder].[ext]'
-          }
+        loader: 'url-loader',
+        exclude: [resolve('src/renderer/components/icon')],
+        options: {
+          limit: 10000,
+          name: 'img/[name].[hash:7].[ext]'
         }
       },
       {

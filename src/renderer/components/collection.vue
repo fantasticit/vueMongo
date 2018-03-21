@@ -73,6 +73,7 @@ export default {
     },
 
     async findAll(db, collection) {
+      console.log('diaoyong');
       this.loading = true;
       const data = await Connect.findAll(db, collection, this.page, this.pageSize)
       this.data = data.docs;
@@ -93,7 +94,8 @@ export default {
 
 <style lang="scss" scoped>
 .page {
-  height: calc(100vh - 5rem);
+  height: calc(100vh - 50px);
+  padding: 15px;
 }
 
 div.breadcrumb, div.paginator {
@@ -103,14 +105,14 @@ div.breadcrumb, div.paginator {
 }
 
 div.paginator {
-  height: 4.5rem;
+  height: 40px;
   justify-content: flex-end;
   padding: 0 1rem 0 0;
 }
 
 ul {
   width: 100%;
-  height: calc(100% - 30px - 7.5rem);
+  height: calc(100% - 70px);
   overflow: auto;
   padding: 0 1rem 0 0;
 }

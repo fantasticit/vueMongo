@@ -1,14 +1,17 @@
 <template>
-  <ul>
-    <p @click="toggle">{{ data.name }}</p>
-    <el-collapse-transition>
-      <div v-show="visible">
-        <li v-for="(item, i) in data.children" :key="i" @click="setCollection(item)">
-          {{ item.name }}
-        </li>
-      </div>
-    </el-collapse-transition>
-  </ul>
+  <el-menu>
+    <el-submenu
+      :index="data.name">
+      <template slot="title">
+        <icon type="database" />
+        <span slot="title">{{ data.name }}</span>
+      </template>
+      <el-menu-item v-for="(item, i) in data.children" :key="i" :index="data.name + '-' + i" @click="setCollection(item)">
+        <icon type="page" />
+        <span>{{ item.name }}</span>
+      </el-menu-item>
+    </el-submenu>
+  </el-menu>
 </template>
 
 <script>
@@ -45,22 +48,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// p, li {
-//   width: 100%;
-//   padding: 1rem;
-//   background: red;
-// }
+ul.el-menu /deep/ {
+  background: inherit;
+  border: 0;
 
-ul {
-  padding: 0;
-  cursor: pointer;
-}
+  .el-submenu__title {
+    color: #fff;
 
-p, li {
-  padding: 10px 15px;
+    &:hover {
+      background: #001528;
+    }
+  }
+
+  ul.el-menu--inline {
+    background: #1f2d3d;
+    color: #fff;
+  }
+
+  .el-menu-item {
+    color: inherit;
+  }
+
+  .el-menu-item:focus,
+  .el-menu-item:hover {
+    background: #001528;
+    color: #fff;
+  }
+
+  .el-menu-item.is-active {
+    color: rgb(64, 158, 255);
+  }
 }
 
 li {
-  padding-left: 25px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 </style>

@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import './components/icon/index';
 import Highlight from './directives/highlight.js'
 import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
 

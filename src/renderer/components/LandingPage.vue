@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <aside>
-      <div class="logo">待定</div>
+      <div class="logo">
+        <Logo />
+      </div>
       <TreeList v-for="(item, i) in connections" :key="i" :data="item" />
     </aside>
     <main>
@@ -14,10 +16,12 @@
 <script>
 import TreeList from './tree';
 import { mapState } from 'vuex';
+import Logo from './logo';
 
 export default {
   components: {
     TreeList,
+    Logo
   },
 
   computed: {
@@ -44,15 +48,15 @@ export default {
 <style lang="scss" scoped>
 div.container {
   position: relative;
-  padding-left: 300px;
+  padding-left: 200px;
 
   aside {
     position: absolute;
     left: 0;
     top: 0;
-    width: 300px;
+    width: 200px;
     height: 100%;
-    background: #2c3e50;
+    background: rgb(73, 80, 96);
     color: #fff;
   }
 

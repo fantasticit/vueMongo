@@ -1,22 +1,20 @@
-# visual-mongo
+<p align="center">
+    <img width="180" src="http://p39p1kvxn.bkt.clouddn.com/logo.svg" alt="logo">
+</p>
 
-> An electron-vue project
+<h2 align="center">MongoVisual</h2>
 
-#### Build Setup
+![预览图](http://p39p1kvxn.bkt.clouddn.com/mongovisual.png)
 
-``` bash
-# install dependencies
-npm install
+## 项目说明
+本项目仍处于开发状态，开发周期十分不明确且随时可能删库夭折。
 
-# serve with hot reload at localhost:9080
-npm run dev
+### 开发目标
+计划开发一款`mongodb`可视化管理应用。
 
-# build electron application for production
-npm run build
-
-
-```
-
----
-
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[7c4e3e9](https://github.com/SimulatedGREG/electron-vue/tree/7c4e3e90a772bd4c27d2dd4790f61f09bae0fcef) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+### 进度管理
+- [ ] 数据库连接
+- [ ] 集合文档查询
+- [ ] 集合文档更新
+- [ ] 集合文档插入
+- 待添加

@@ -1,10 +1,14 @@
 <template>
   <header>
+    <div class="collapse-menu">
+      <span>
+        <icon type="menu" />
+      </span>
+    </div>
     <ul>
       <li @click="toggleModal">
         <div>
-          <i class="el-icon-sort"></i>
-          <p>连接</p>
+          <icon type="connection" />
         </div>
       </li>
     </ul>
@@ -18,8 +22,8 @@
         </el-form-item>
       </el-form>
       <div slot="footer">
-        <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-        <el-button @click="resetForm('ruleForm')">取消</el-button>
+        <el-button size="small" type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+        <el-button size="small" @click="resetForm('ruleForm')">取消</el-button>
       </div>
     </el-dialog>
   </header>
@@ -80,9 +84,18 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  // background: #495060;
-  // color: #fff;
-  height: 5rem;
+  height: 50px;
+  border-bottom: 1px solid #e6e6e6;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4em;
+
+  .collapse-menu {
+    padding: 10px;
+    cursor: pointer;
+  }
 
   ul {
     height: 100%;
@@ -100,7 +113,7 @@ header {
     align-items: center;
 
     i {
-      font-size: 2rem;
+      font-size: 20px;
     }
   }
 }
