@@ -46,7 +46,7 @@ div.container {
     top: 0;
     width: 240px;
     height: 100%;
-    background: rgb(73, 80, 96);
+    background: #2c3e50;
     color: #fff;
     overflow: auto;
 

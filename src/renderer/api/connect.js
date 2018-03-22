@@ -5,22 +5,26 @@ class Connect {
     const data = await http({
       method: 'post',
       url: '/db/connect',
-      data: {name: db, url}
+      data: {db, url}
     })
   
     return data
   }
 
-  static async findAll(db, collection, query, page, pageSize) {
+
+  /**
+   * 获取数据库集合状态
+   * @param {*} db 
+   */
+  static async getDBCollectionStats(db) {
     try {
       const data = await http({
         method: 'get',
-        url: `/db/${db}/collection/${collection}?query=${query}&page=${page}&pageSize=${pageSize}`,
+        url: `/db/${db}`,
       })
-    
+
       return data
-    } catch (err) {
-      console.log(err)
+    }  catch (err) {
       throw new Error(err)
     }
   }

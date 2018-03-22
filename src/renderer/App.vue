@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <pre>{{ this.$router.currentRoute.path }}</pre>
+    <div class="helper">
+      <!-- <pre>{{ this.$router.currentRoute.path }}</pre> -->
+    </div>
     <router-view class="wrapper"></router-view>
   </div>
 </template>
@@ -20,6 +22,10 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  box-sizing: border-box;
+}
+
 html, body, ul, p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
@@ -39,20 +45,14 @@ body {
   }
 }
 
-* {
-  box-sizing: border-box;
+.helper {
+  position: fixed;
+  bottom: 0;
+  // left: 50%;
+  // transform: translateX(-50%);
+  z-index: 10000;
 
-  ::-webkit-scrollbar {
-    width: 5px;
-    background: hsla(0, 0, 100%, .6);
-  }
-
-  ::-webkit-scrollbar-track {
-    border-radius: 0px;
-  }
-  ::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background:rgba(95, 95, 95, 0.4);
-  }
+  height: 30px;
+  background: #fff;
 }
 </style>

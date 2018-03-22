@@ -11,6 +11,11 @@ export default new Router({
       component: require('@/components/layout').default,
       children: [
         {
+          path: 'db/:db',
+          name: 'DB',
+          component: require('@/components/db/').default,
+        },
+        {
           path: 'db/:db/collection/:collection',
           name: 'Collection',
           component: require('@/components/collection/').default,
@@ -18,7 +23,7 @@ export default new Router({
         {
           path: 'db/:db/collection/:collection/document/:document',
           name: 'Document',
-          component: require('@/components/document/index.vue').default,
+          component: require('@/components/document/').default,
         },
       ]
     },

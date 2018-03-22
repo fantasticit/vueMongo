@@ -92,7 +92,10 @@ export default {
         connect: this.ruleForm,
         isReconnect: this.isReconnect
       })
-        .then(_ => this.showModal = false)
+        .then(_ => {
+          this.showModal = false;
+          this.$message.success('连接成功');
+        })
         .catch(err => this.$message.error(err.message))
     },
   },

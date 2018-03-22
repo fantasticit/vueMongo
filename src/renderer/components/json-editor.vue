@@ -37,9 +37,20 @@ export default {
   mounted() {
     this.jsonEditor = CodeMirror.fromTextArea(this.$refs.textarea, {
       lineNumbers: true,
-      mode: 'application/json',
-      gutters: ['CodeMirror-lint-markers'],
-      theme: 'eclipse',
+      scrollbarStyle: 'null',
+      mode: 'javascript',
+      autoCloseBrackets: true,
+      matchBrackets: true,
+      mongodb: {
+        fields: {
+          _id: 'ObjectId',
+          name: 'String',
+          age: 'Number',
+          number_of_pets: 'Number',
+          addresses: 'Array',
+          'addresses.street': 'String'
+        }
+      },
       lint: true
     })
 

@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       logo: logo,
-      name: 'MongoVisual',
+      name: 'mongoVisual',
     }
   },
 }
@@ -30,8 +30,13 @@ export default {
   height: 50px;
 
   img {
-    width: 48px;
-    height: 48px;
+    width: 58px;
+    height: 58px;
+  }
+
+  span {
+    color: #fff;
+    font-size: 1.5em;
   }
 }
 </style>
