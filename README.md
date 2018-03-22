@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="180" src="http://p39p1kvxn.bkt.clouddn.com/logo.svg" alt="logo">
+    <img width="180" src="http://p39p1kvxn.bkt.clouddn.com/mongo-visual.svg" alt="logo">
 </p>
 
 <h2 align="center">MongoVisual</h2>
@@ -13,8 +13,13 @@
 计划开发一款`mongodb`可视化管理应用。
 
 ### 进度管理
-- [ ] 数据库连接
-- [ ] 集合文档查询
-- [ ] 集合文档更新
-- [ ] 集合文档插入
-- 待添加
+- [x] 数据库连接
+- [ ] 数据库索引
+- [ ] 数据库用户管理
+- [ ] 数据库状态
+- [x] 集合状态
+- [x] 文档查询
+- [x] 文档更新
+- [x] 文档插入
+
+待添加...
