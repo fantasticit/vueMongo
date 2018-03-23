@@ -1,6 +1,13 @@
 const ObjectID = require("bson-objectid");
 
 module.exports = class Util {
+  /**
+   * 获取集合中的文档
+   * @param {*} collection 
+   * @param {*} query 
+   * @param {*} skip 
+   * @param {*} limit 
+   */
   static findAll(collection, query = {}, skip, limit) {
     try {
       query = JSON.parse(query);
@@ -22,6 +29,11 @@ module.exports = class Util {
     })
   }
   
+  /**
+   * 查询指定Id的数据
+   * @param {*} collection 
+   * @param {*} id 
+   */
   static findById(collection, id) {
     id = ObjectID(id);
     
@@ -36,6 +48,11 @@ module.exports = class Util {
     })
   }
   
+  /**
+   * 更新指定Id文档
+   * @param {*} collection 
+   * @param {*} newDocument 
+   */
   static updateById(collection, newDocument) {
     newDocument = JSON.parse(JSON.stringify(newDocument));
     newDocument._id && (newDocument._id = ObjectID(newDocument._id));
@@ -46,6 +63,11 @@ module.exports = class Util {
     });
   }
   
+  /**
+   * 删除指定Id的文档
+   * @param {*} collection 
+   * @param {*} id 
+   */
   static deleteById(collection, id) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -58,6 +80,11 @@ module.exports = class Util {
     });
   }
 
+  /**
+   * 插入文档
+   * @param {*} collection 
+   * @param {*} document 
+   */
   static async insert(collection, document) {
     return new Promise(async (resolve, reject) => {
       try {

@@ -13,7 +13,12 @@ export default new Router({
         {
           path: 'db/:db',
           name: 'DB',
-          component: require('@/components/db/').default,
+          component: require('@/components/db/collection.vue').default,
+        },
+        {
+          path: 'db/:db/user',
+          name: 'User',
+          component: require('@/components/db/user.vue').default,
         },
         {
           path: 'db/:db/collection/:collection',

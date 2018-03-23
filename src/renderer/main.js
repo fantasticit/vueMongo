@@ -5,7 +5,7 @@ import store from './store';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'highlight.js/styles/googlecode.css';
-import 'jsoneditor/dist/jsoneditor.min.css';
+// import 'jsoneditor/dist/jsoneditor.min.css';
 import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
 import './components/icon/index';
 import Http from './api/index';

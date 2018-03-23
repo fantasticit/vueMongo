@@ -1,22 +1,11 @@
 import http from './config';
 
-class Connect {
-  static async getConnect (db, url) {
-    const data = await http({
-      method: 'post',
-      url: '/db/connect',
-      data: {db, url}
-    })
-  
-    return data
-  }
-
-
+class Collection {
   /**
    * 获取数据库集合状态
    * @param {*} db 
    */
-  static async getDBCollectionStats(db) {
+  static async getCollections(db) {
     try {
       const data = await http({
         method: 'get',
@@ -29,7 +18,7 @@ class Connect {
     }
   }
 
-  static async deleteDBCollection(db, collection) {
+  static async deleteCollection(db, collection) {
     try {
       const data = await http({
         method: 'delete',
@@ -43,4 +32,4 @@ class Connect {
   }
 }
 
-export default Connect;
+export default Collection;

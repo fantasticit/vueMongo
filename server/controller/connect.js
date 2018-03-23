@@ -5,13 +5,14 @@ const MongoClient = require('mongodb').MongoClient;
 const connectPool = require('./connect-pool');
 
 /**
- * 连接制定的数据库并返回数据库中的集合
+ * 连接指定的数据库并返回数据库中的集合
  */
 function connectDB(db, url) {
   return new Promise(async (resolve, reject) => {
     try {
       const connect = await MongoClient.connect(url);
       connectPool[db] = connect.db(db);
+
       const collections = await connectPool[db].collections({});
       resolve(collections);
     } catch (err) {
@@ -33,9 +34,12 @@ module.exports = class Connect {
     ctx.body = { code: 'ok', data: collectionsName };
   }
 
+  /**
+   * 获取数据库中所有的集合状态
+   * @param {*} ctx 
+   */
   static async getDBCollectionsStats(ctx) {
     let { db } = ctx.params;
-    console.log(db);
 
     if (!connectPool[db]) {
       return ctx.body = { code: 'no', message: '连接失败，请重新连接数据库' };
@@ -45,16 +49,12 @@ module.exports = class Connect {
       return new Promise((resolve, reject) => {
         collection.stats().then(result => resolve(result)).catch(err => reject(err))
       })
-    }
+    };
     const collections = await connectPool[db].collections({});
-
-
-    const stats = [];
     const fns = collections.map(collection => {
       return getCollectionStats(connectPool[db].collection(collection.s.name));
     });
-
-    const data = await Promise.all(fns);
-    ctx.body = { code: 'ok', data };
+    const collectionStats = await Promise.all(fns);
+    ctx.body = { code: 'ok', data: collectionStats };
   }
 }
