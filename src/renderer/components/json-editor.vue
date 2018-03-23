@@ -71,13 +71,13 @@ export default {
 
 <style scoped>
 .json-editor{
-  width: 100%;
+  width: 100% !important;
   height: 100%;
   position: relative;
   border: 1px solid #eee;
-   caret-color: red !important;
 }
 .json-editor >>> .CodeMirror {
+  width: 100% !important;
   height: 100%;
   min-height: 300px;
 }
@@ -87,28 +87,4 @@ export default {
 .json-editor >>> .cm-s-rubyblue span.cm-string {
   color: #F08047;
 }
-
-/* .json-editor >>> .cm-s-rubyblue.CodeMirror {
-  background: #fff;
-}
-
-.json-editor >>> .cm-s-rubyblue .CodeMirror-gutters{
-  background: #f5f8fa;
-  border-right-width: 1px;
-  border-right-color: #eee;
-}
-
-.json-editor >>> .CodeMirror-code {
-  color: #333;
-  font-weight: 600;
-}
-
-.json-editor >>> .cm-s-rubyblue .CodeMirror-linenumber {
-  color: #666;
-}
-
-/* 光标 */
-/* .json-editor >>> .cm-s-rubyblue .CodeMirror-cursor {
-  border-color: #000;
-} */
 </style>

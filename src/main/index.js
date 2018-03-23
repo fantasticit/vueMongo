@@ -24,6 +24,8 @@ function createWindow () {
   })
 
   mainWindow.loadURL(winURL)
+  // 开启服务
+  require('../server/index');
 
   mainWindow.on('closed', () => {
     mainWindow = null
@@ -44,110 +46,98 @@ app.on('activate', () => {
   }
 })
 
-const ipc = require('electron').ipcMain
-const dialog = require('electron').dialog
+// const ipc = require('electron').ipcMain
+// const dialog = require('electron').dialog
 
-ipc.on('save-dialog', function (event) {
-  const options = {
-    title: '保存图片',
-    filters: [
-      { name: 'Images', extensions: ['jpg', 'png', 'gif'] }
-    ]
-  }
-  dialog.showSaveDialog(options, function (filename) {
-    event.sender.send('saved-file', filename)
-  })
-})
-
-const { Menu } = require('electron')
+// const { Menu } = require('electron')
   
-const template = [
-  {
-    label: 'Edit',
-    submenu: [
-      {role: 'undo'},
-      {role: 'redo'},
-      {type: 'separator'},
-      {role: 'cut'},
-      {role: 'copy'},
-      {role: 'paste'},
-      {role: 'pasteandmatchstyle'},
-      {role: 'delete'},
-      {role: 'selectall'}
-    ]
-  },
-  {
-    label: 'View',
-    submenu: [
-      {role: 'reload'},
-      {role: 'forcereload'},
-      {role: 'toggledevtools'},
-      {type: 'separator'},
-      {role: 'resetzoom'},
-      {role: 'zoomin'},
-      {role: 'zoomout'},
-      {type: 'separator'},
-      {role: 'togglefullscreen'}
-    ]
-  },
-  {
-    role: 'window',
-    submenu: [
-      {role: 'minimize'},
-      {role: 'close'}
-    ]
-  },
-  {
-    role: 'help',
-    submenu: [
-      {
-        label: 'Learn More',
-        click () { require('electron').shell.openExternal('https://electronjs.org') }
-      }
-    ]
-  }
-]
+// const template = [
+//   {
+//     label: 'Edit',
+//     submenu: [
+//       {role: 'undo'},
+//       {role: 'redo'},
+//       {type: 'separator'},
+//       {role: 'cut'},
+//       {role: 'copy'},
+//       {role: 'paste'},
+//       {role: 'pasteandmatchstyle'},
+//       {role: 'delete'},
+//       {role: 'selectall'}
+//     ]
+//   },
+//   {
+//     label: 'View',
+//     submenu: [
+//       {role: 'reload'},
+//       {role: 'forcereload'},
+//       {role: 'toggledevtools'},
+//       {type: 'separator'},
+//       {role: 'resetzoom'},
+//       {role: 'zoomin'},
+//       {role: 'zoomout'},
+//       {type: 'separator'},
+//       {role: 'togglefullscreen'}
+//     ]
+//   },
+//   {
+//     role: 'window',
+//     submenu: [
+//       {role: 'minimize'},
+//       {role: 'close'}
+//     ]
+//   },
+//   {
+//     role: 'help',
+//     submenu: [
+//       {
+//         label: 'Learn More',
+//         click () { require('electron').shell.openExternal('https://electronjs.org') }
+//       }
+//     ]
+//   }
+// ]
 
-if (process.platform === 'darwin') {
-  template.unshift({
-    label: app.getName(),
-    submenu: [
-      {role: 'about'},
-      {type: 'separator'},
-      {role: 'services', submenu: []},
-      {type: 'separator'},
-      {role: 'hide'},
-      {role: 'hideothers'},
-      {role: 'unhide'},
-      {type: 'separator'},
-      {role: 'quit'}
-    ]
-  })
+// if (process.platform === 'darwin') {
+//   template.unshift({
+//     label: app.getName(),
+//     submenu: [
+//       {role: 'about'},
+//       {type: 'separator'},
+//       {role: 'services', submenu: []},
+//       {type: 'separator'},
+//       {role: 'hide'},
+//       {role: 'hideothers'},
+//       {role: 'unhide'},
+//       {type: 'separator'},
+//       {role: 'quit'}
+//     ]
+//   })
 
-  // Edit menu
-  template[1].submenu.push(
-    {type: 'separator'},
-    {
-      label: 'Speech',
-      submenu: [
-        {role: 'startspeaking'},
-        {role: 'stopspeaking'}
-      ]
-    }
-  )
+//   // Edit menu
+//   template[1].submenu.push(
+//     {type: 'separator'},
+//     {
+//       label: 'Speech',
+//       submenu: [
+//         {role: 'startspeaking'},
+//         {role: 'stopspeaking'}
+//       ]
+//     }
+//   )
 
-  // Window menu
-  template[3].submenu = [
-    {role: 'close'},
-    {role: 'minimize'},
-    {role: 'zoom'},
-    {type: 'separator'},
-    {role: 'front'}
-  ]
-}
+//   // Window menu
+//   template[3].submenu = [
+//     {role: 'close'},
+//     {role: 'minimize'},
+//     {role: 'zoom'},
+//     {type: 'separator'},
+//     {role: 'front'}
+//   ]
+// }
 
-const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
+// const menu = Menu.buildFromTemplate(template)
+// Menu.setApplicationMenu(menu)
 
 /**
  * Auto Updater

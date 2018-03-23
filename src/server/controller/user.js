@@ -48,24 +48,22 @@ module.exports = class User {
    * @param {*} ctx 
    */
   static async deleteUser(ctx) {
-    const { db } = ctx.params;
+    let { db, users } = ctx.params;
     if (!connectPool[db]) {
       return ctx.body = { code: 'no', message: '连接失败，请重新连接数据库' };
     }
 
-    const users = ctx.request.body || [];
-    const handle = user => {
-      return new Promise((resolve, reject) => {
-        connectPool[db].removeUser(user, (err, user) => {
-          if (err) {
-            reject(err)
-          } else {
-            resolve
-          }
-        })
+    users = users.split('|');
+    
+    users.map(user => {
+      connectPool[db].removeUser(user, (err, user) => {
+        if (err) {
+          ctx.status = 500;
+          ctx.body = { code: 'no', message: '删除失败' };
+        }
       })
-    };
-    await Promise.all(users.map(user => handle(user)));
-    ctx.body = { code: 'ok' };
+    })
+
+    return ctx.body = { code: 'ok' };
   }
 }

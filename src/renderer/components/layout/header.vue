@@ -11,13 +11,13 @@
         <span>连接</span>
       </li>
     </ul>
-    <el-dialog title="新建连接" :visible.sync="showModal">
+    <el-dialog title="新建连接" :visible.sync="showModal" :close-on-click-modal="false">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="80px" class="demo-ruleForm">
         <el-form-item label="连接名称" prop="name">
-          <el-input v-model="ruleForm.name"></el-input>
+          <el-input v-model="ruleForm.name" placeholder="请输入要连接的数据库名词"></el-input>
         </el-form-item>
         <el-form-item label="连接地址" prop="url">
-          <el-input v-model="ruleForm.url"></el-input>
+          <el-input v-model="ruleForm.url" placeholder="请输入形如 mongodb://<user>:<passwd>@<host>:<port> 的URL"></el-input>
         </el-form-item>
 
         <el-form-item label="断线重连">
@@ -46,8 +46,8 @@ export default {
       isCollapse: false,
       showModal: false,
       ruleForm: {
-        name: 'elapse',
-        url: 'mongodb://zx:zx123@127.0.0.1',
+        name: '', // elapse
+        url: '' // mongodb://zx:zx123@127.0.0.1,
       },
       rules: {
         name: [
@@ -58,6 +58,12 @@ export default {
         ],
       },
       isReconnect: false, // 重新连接
+    }
+  },
+
+  created() {
+    if (this.$store.state.connect.connections.length <= 0) {
+      this.showModal = true;
     }
   },
 

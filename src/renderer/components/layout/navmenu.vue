@@ -82,7 +82,7 @@ li {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-size: 14px;
+  font-size: 16px;
   list-style: none;
   cursor: pointer;
   position: relative;

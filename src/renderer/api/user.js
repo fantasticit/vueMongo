@@ -32,8 +32,7 @@ class User {
     try {
       const data = await http({
         method: 'delete',
-        url: `/db/${db}/deleteUser`,
-        data: users
+        url: `/db/${db}/users/${users.join('|')}`,
       })
 
       return data

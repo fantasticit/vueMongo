@@ -23,7 +23,7 @@
             新增
           </el-button>
         </li>
-        <li><el-button size="small" type="success">索引</el-button></li>
+        <!-- <li><el-button size="small" type="success">索引</el-button></li> -->
       </ul>
       
       <ul>
@@ -49,6 +49,7 @@
       <el-dialog
         title="文档查询"
         :visible="showQueryModal"
+        :close-on-click-modal="false"
         width="50%"
         :before-close="() => this.showQueryModal = false">
         <div>
@@ -64,6 +65,7 @@
       <el-dialog
         title="新增文档"
         :visible="showInsertModal"
+        :close-on-click-modal="false"
         width="50%"
         :before-close="() => this.showInsertModal = false">
         <div>

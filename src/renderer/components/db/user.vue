@@ -15,10 +15,10 @@
     <div class="toolbar">
       <div>
         <el-button type="danger" size="mini" @click="deleteUser">删除用户</el-button>
-        <el-button type="info" size="mini">返回上一页</el-button>
+        <el-button type="info" size="mini" @click="goback">返回上一页</el-button>
       </div>
       <el-button type="primary" size="mini" @click="() => this.showModal = true">新增用户</el-button>
-      <el-dialog title="新建用户" :visible.sync="showModal">
+      <el-dialog title="新建用户" :visible.sync="showModal" :close-on-click-modal="false">
         <el-form label-width="80px" :model="ruleForm" :rules="rules" ref="ruleForm">
           <el-form-item label="用户姓名" prop="user">
             <el-input type="text" auto-complete="off" v-model="ruleForm.user"></el-input>
@@ -137,9 +137,9 @@ export default {
     async deleteUser(users) {
       try {
         const users = this.selectedUsers.map(user => user.user);
-        await this.$http.db.deleteUser(this.$route.params.db, users);
+        await this.$http.user.deleteUser(this.$route.params.db, users);
         this.$message.success('用户已删除');
-        this.fetchUser();
+        this.fetchUsers();
       } catch (err) {
         this.$message.error(err.message);
       }
@@ -166,6 +166,10 @@ export default {
     resetForm(formName) {
       this.showModal = false;
       this.$refs[formName].resetFields();
+    },
+
+    goback() {
+      this.$router.go(-1);
     },
   },
 }

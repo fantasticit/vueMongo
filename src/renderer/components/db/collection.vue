@@ -1,5 +1,5 @@
 <template>
-  <div class="page" v-loading.lock="loading">
+  <div class="page">
     <!-- S 面包屑 -->
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
@@ -13,7 +13,7 @@
       <el-button type="primary" size="mini" @click="gotoUser">用户管理</el-button>
     </div>
 
-    <div class="collections">
+    <div class="collections" v-loading.lock="loading">
       <el-table
         :data="data"
         stripe

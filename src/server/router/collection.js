@@ -1,4 +1,4 @@
-module.exports = function connect(app, router) {
+module.exports = function collection(app, router) {
   const controller = app.controller.collection;
 
   router.get('/db/:db/collection/:collection', controller.findAll);

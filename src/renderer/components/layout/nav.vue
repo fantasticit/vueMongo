@@ -2,9 +2,20 @@
   <nav>
     <div class="logo-container">
       <Logo />
+        
     </div>
     <div class="menu-container">
-      <p class="title">数据库</p>
+      <p class="title">
+        <el-popover
+          ref="pop"
+          placement="top-start"
+          title="提示"
+          width="120"
+          trigger="hover"
+          content="点击连接按钮后，成功连接的数据库会展示在下方">
+        </el-popover>
+        <span v-popover:pop>数据库连接</span>
+      </p>
       <div class="">
         <Navmenun v-for="(item, i) in connections" :key="i" :data="item" />
       </div>
@@ -66,6 +77,7 @@ nav {
   .menu-container {
     height: calc(100% - 60px);
     overflow: hidden;
+    font-size: 16px;
 
     > div {
       height: calc(100% - 40px);
