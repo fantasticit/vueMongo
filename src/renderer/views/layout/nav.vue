@@ -1,9 +1,5 @@
 <template>
   <nav>
-    <div class="logo-container">
-      <Logo />
-        
-    </div>
     <div class="menu-container">
       <p class="title">
         <el-popover
@@ -26,7 +22,7 @@
 <script>
 import { mapState } from 'vuex';
 import Navmenun from './navmenu';
-import Logo from '../logo';
+import Logo from '@/components/logo';
 
 export default {
   components: {
@@ -68,7 +64,7 @@ nav {
   }
 
   .title {
-    background: #334556;
+    // background: #334556;
     height: 40px;
     line-height: 40px;
     padding-left: 20px;

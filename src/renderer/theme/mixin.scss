@@ -1,0 +1,12 @@
+@mixin flexLayout($justify: flex-start, $display: flex) {
+  display: flex;
+  justify-content: $justify;
+
+  @content;
+}
+
+@mixin textOverflow() {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

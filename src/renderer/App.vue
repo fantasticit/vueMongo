@@ -1,17 +1,26 @@
 <template>
   <div id="app">
-    <div class="helper">
+    <!-- <div class="helper"> -->
       <!-- <pre>{{ this.$router.currentRoute.path }}</pre> -->
-    </div>
-    <router-view class="wrapper"></router-view>
+    <!-- </div> -->
+    <Header />
+    <router-view class="view"></router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 
 export default {
   name: 'visual-mongo',
+
+  components: {
+    Header,
+    Footer,
+  },
 
   computed: {
     ...mapState({
@@ -22,37 +31,16 @@ export default {
 </script>
 
 <style lang="scss">
-* {
-  box-sizing: border-box;
-}
-
-html, body, ul, p, h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-}
+@import './theme/index.scss';
 
 #app {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background: #f3f3f3;
 
-  > .wrapper {
-    flex: 1;
+  .view {
+    height: calc(100% - 85px);
   }
-}
-
-.helper {
-  position: fixed;
-  bottom: 0;
-  // left: 50%;
-  // transform: translateX(-50%);
-  z-index: 10000;
-
-  height: 30px;
-  background: #fff;
 }
 </style>

@@ -11,7 +11,9 @@
         class="submenu-item"
         v-for="(item, i) in data.children" :key="i"
         :class="{ 
-          'is-active': $route.params.collection && 
+          'is-active': $route.params.db &&
+                       $route.params.db === data.name && 
+                       $route.params.collection &&
                        $route.params.collection === item.name 
         }"
         @click="gotoCollection(item)">
@@ -70,10 +72,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../theme/index.scss';
+
 ul.menu {
+  border: 1px solid $border;
+  border-left: 0;
+  border-right: 0;
+  background: #fff;
+
+  + ul.menu {
+    border-top: 0;
+  }
+
   li {
     &:hover {
-      background: #001528;
+      // background: #001528;
     }
   }
 }
@@ -114,11 +127,12 @@ li.submenu-item {
   height: 50px;
   line-height: 50px;
   padding: 0 40px;
-  background: #1f2d3d;
+  // background: #1f2d3d;
 }
 
 li.is-active {
-  color: rgb(64, 158, 255);
+  color: $menu-active-color;
+  background: $menu-active-bg;
 }
 
 .icon {

@@ -177,7 +177,7 @@ export default {
 
 <style lang="scss" scoped>
 .page {
-  height: calc(100vh - 50px);
+  height: 100%;
   padding: 15px;
 }
 

@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import JSONEditor from '../json-editor';
+import JSONEditor from '@/components/json-editor.vue';
 
 export default {
   name: 'Document',
@@ -97,11 +97,12 @@ export default {
 
 <style lang="scss" scoped>
 .page {
-  height: calc(100vh - 50px);
+  height: 100%;
   padding: 15px;
 }
 
 div.toolbar {
+  height: 30px;
   margin-bottom: 15px;
 }
 
@@ -110,6 +111,6 @@ div.toolbar {
 }
 
 .editor {
-  height: 500px;
+  height: calc(100% - 80px);
 }
 </style>

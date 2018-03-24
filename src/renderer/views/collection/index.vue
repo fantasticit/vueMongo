@@ -110,9 +110,9 @@
 </template>
 
 <script>
-import Connect from '../../api/connect';
+import Connect from '@/api/connect';
 import DocItem from './doc-item';
-import JSONEditor from '../json-editor';
+import JSONEditor from '@/components/json-editor.vue';
 
 export default {
   components: {

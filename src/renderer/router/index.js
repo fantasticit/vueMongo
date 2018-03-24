@@ -8,27 +8,27 @@ export default new Router({
     {
       path: '/',
       name: 'Layout',
-      component: require('@/components/layout').default,
+      component: require('@/views/layout').default,
       children: [
         {
           path: 'db/:db',
           name: 'DB',
-          component: require('@/components/db/collection.vue').default,
+          component: require('@/views/db/collection.vue').default,
         },
         {
           path: 'db/:db/user',
           name: 'User',
-          component: require('@/components/db/user.vue').default,
+          component: require('@/views/db/user.vue').default,
         },
         {
           path: 'db/:db/collection/:collection',
           name: 'Collection',
-          component: require('@/components/collection/').default,
+          component: require('@/views/collection/').default,
         },
         {
           path: 'db/:db/collection/:collection/document/:document',
           name: 'Document',
-          component: require('@/components/document/').default,
+          component: require('@/views/document/').default,
         },
       ]
     },

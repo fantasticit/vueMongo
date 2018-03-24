@@ -1,20 +1,16 @@
 <template>
   <header>
-    <div class="collapse-menu" @click="toggleCollapse">
-      <span>
-        <icon :type="isCollapse ? 'menu' : 'menu-retract'" />
-      </span>
-    </div>
-    <ul>
-      <li @click="toggleModal">
-        <icon type="connection" />
+    <div class="container">
+      <button @click="() => this.showConnectModal = true">
+        <icon type="add" />
         <span>连接</span>
-      </li>
-    </ul>
-    <el-dialog title="新建连接" :visible.sync="showModal" :close-on-click-modal="false">
+      </button>
+    </div>
+    
+    <el-dialog title="创建连接" :close-on-click-modal="false" :visible.sync="showConnectModal">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="80px" class="demo-ruleForm">
         <el-form-item label="连接名称" prop="name">
-          <el-input v-model="ruleForm.name" placeholder="请输入要连接的数据库名词"></el-input>
+          <el-input v-model="ruleForm.name" placeholder="请输入要连接的数据库"></el-input>
         </el-form-item>
         <el-form-item label="连接地址" prop="url">
           <el-input v-model="ruleForm.url" placeholder="请输入形如 mongodb://<user>:<passwd>@<host>:<port> 的URL"></el-input>
@@ -29,25 +25,24 @@
         </el-form-item>
       </el-form>
       <div slot="footer">
-        <el-button size="small" type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
         <el-button size="small" @click="resetForm('ruleForm')">取消</el-button>
+        <el-button size="small" type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
       </div>
     </el-dialog>
   </header>
 </template>
 
 <script>
-import Store from '@/store'
-
 export default {
   name: 'Header',
+
   data() {
     return {
       isCollapse: false,
-      showModal: false,
+      showConnectModal: false,
       ruleForm: {
-        name: '', // elapse
-        url: '' // mongodb://zx:zx123@127.0.0.1,
+        name: 'elapse', // 
+        url: 'mongodb://zx:zx123@127.0.0.1' // mongodb://zx:zx123@127.0.0.1,
       },
       rules: {
         name: [
@@ -62,9 +57,9 @@ export default {
   },
 
   created() {
-    if (this.$store.state.connect.connections.length <= 0) {
-      this.showModal = true;
-    }
+    // if (this.$store.state.connect.connections.length <= 0) {
+    //   this.showConnectModal = true;
+    // }
   },
 
   methods: {
@@ -74,7 +69,7 @@ export default {
     },
 
     toggleModal() {
-      this.showModal = !this.showModal;
+      this.showConnectModal = !this.showConnectModal;
     },
 
     submitForm(formName) {
@@ -90,7 +85,7 @@ export default {
 
     resetForm(formName) {
       this.$refs[formName].resetFields();
-      this.showModal = false;
+      this.showConnectModal = false;
     },
 
     addConnect() {
@@ -99,7 +94,7 @@ export default {
         isReconnect: this.isReconnect
       })
         .then(_ => {
-          this.showModal = false;
+          this.showConnectModal = false;
           this.$message.success('连接成功');
         })
         .catch(err => this.$message.error(err.message))
@@ -109,44 +104,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../theme/index.scss';
+
 header {
-  height: 50px;
-  border-bottom: 1px solid #e6e6e6;
+  height: $padding * 3;
+  padding: 0 $padding;
+  background: $bg-header;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.4em;
+  // border-bottom: 1px solid $border;
+  color: #fff;
+  font-size: 1.1em;
+  
+  @include flexLayout(space-between);
 
-  .collapse-menu {
-    padding: 1rem;
-    cursor: pointer;
-  }
+  div.container {
+    @include flexLayout(space-between) {
+      align-items: center;
+    };
 
-  ul {
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0 1rem;
-  }
+    button {
+      padding: 4px 10px;
+      outline: none;
+      color: #fff;
+      background: $primary;
+      border-radius: 3px;
+      border: 1px solid $primary;
+      cursor: pointer;
+      @include flexLayout(space-between) {
+        align-items: center;
+      };
 
-  li {
-    height: 100%;
-    display: flex;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
+      svg {
+        font-size: 1.1em;
+        margin-right: 6px;
+      }
 
-    svg {
-      font-size: 20px !important;
-    }
-
-    span {
-      margin-left: 2px;
-      transform: translateY(-.5px);
+      span {
+        font-size: .9em;
+        transform: translateY(-1px);
+      }
     }
   }
 }
+
+
 </style>
