@@ -1,5 +1,5 @@
 {
-  "name": "visual-mongo",
+  "name": "MongoVisual",
   "version": "0.0.0",
   "author": "zhaoxu <bken2016@163.com>",
   "description": "An electron-vue project",
@@ -63,8 +63,10 @@
     "koa": "^2.5.0",
     "koa-body": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
+    "koa-redis-cache": "^3.0.0",
     "koa-router": "^7.4.0",
     "koa2-cors": "^2.0.5",
+    "moment": "^2.21.0",
     "mongodb": "^3.0.4",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.7",

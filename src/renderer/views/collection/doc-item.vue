@@ -122,7 +122,7 @@ li {
   overflow: hidden;
   padding: $padding;
   cursor: pointer;
-  font-size: 0;
+  // font-size: 0;
 
   + li {
     margin-top: 1.5rem;
@@ -133,13 +133,13 @@ li {
     justify-content: space-between;
     align-items: center;
 
-    font-size: 14px;
+    font-size: 1em;
   }
 
   .body {
     will-change: height;
     transition: all ease-in-out .3s;
-    font-size: 14px;
+    font-size: 1em;
     margin-top: $padding;
   }
 

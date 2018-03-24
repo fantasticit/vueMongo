@@ -1,0 +1,57 @@
+.page {
+  height: 100%;
+
+  div.breadcrumb,
+  div.toolbar,
+  div.paginator {
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  div.breadcrumb {
+    padding: 0 $padding;
+    border-bottom: 1px solid $border;
+  }
+  
+  div.paginator {
+    height: 40px;
+    justify-content: flex-end;
+    margin: $margin 0;
+    padding: 0 15px 0 0;
+  }
+
+  div.toolbar {
+    margin: $margin 0;
+    padding: 0 $scrollbarWidth * 2 0 $padding;
+    justify-content: space-between;
+  
+    ul {
+      font-size: 0;
+    }
+  
+    li {
+      display: inline-block;
+  
+      + li {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .content {
+    width: 100%;
+    height: calc(100% - 150px);
+    overflow: auto;
+    padding: 0 $scrollbarWidth 0 $padding;
+    
+    @include scrollbar();
+    
+    p {
+      text-align: center;
+      margin: 50px 0;
+      font-size: 24px;
+      color: #73879C;
+    }
+  }
+}

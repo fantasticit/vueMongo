@@ -37,16 +37,16 @@ export default {
   },
 
   watch: {
-    '$route'() { // 自动展开功能
-      if (
-        this.$route.params['collection']
-        && this.$route.params['db'] === this.data.name
-      ) {
-        this.$nextTick(_ => this.visible = true);
-      } else if (!this.$route.params['collection']) {
-        this.visible = false
-      }
-    }
+    // '$route'() { // 自动展开功能
+    //   if (
+    //     this.$route.params['collection']
+    //     && this.$route.params['db'] === this.data.name
+    //   ) {
+    //     this.$nextTick(_ => this.visible = true);
+    //   } else if (!this.$route.params['collection']) {
+    //     this.visible = false
+    //   }
+    // }
   },
 
   data() {
@@ -83,26 +83,24 @@ ul.menu {
   + ul.menu {
     border-top: 0;
   }
-
-  li {
-    &:hover {
-      // background: #001528;
-    }
-  }
 }
 
 li {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-size: 16px;
+  font-size: 1em;
   list-style: none;
   cursor: pointer;
   position: relative;
-  transition: border-color .3s,background-color .3s,color .3s;
+  transition: all .3s ease;
 
   display: flex;
   align-items: center;
+
+  &:hover {
+    background: $menu-active-bg;
+  }
 
   span {
     margin-left: 22px;
@@ -110,9 +108,7 @@ li {
 }
 
 li.menu-item {
-  height: 56px;
-  line-height: 56px;
-  padding: 0 20px;
+  padding: 1em 20px;
 
   span {
     position: relative;
@@ -124,10 +120,8 @@ li.menu-item {
 }
 
 li.submenu-item {
-  height: 50px;
-  line-height: 50px;
-  padding: 0 40px;
-  // background: #1f2d3d;
+  font-size: .9em;
+  padding: .9em 40px;
 }
 
 li.is-active {

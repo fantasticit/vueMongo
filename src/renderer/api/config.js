@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '@/store';
 
 const querystring = require('querystring');
 
@@ -28,6 +29,7 @@ http.interceptors.response.use(
 
   err => {
     if (err.response) {
+      store.dispatch('addError', err.response.data);
       throw new Error(
         err.response.data &&
         err.response.data.message ||

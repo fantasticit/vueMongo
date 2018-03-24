@@ -2,7 +2,6 @@
   <div class="container" :class="{ 'is-collapse': isCollapse }">
     <Nav :class="{ 'is-collapse': isCollapse }" />
     <main>
-      <!-- <Header @toggleCollapse="toggleCollapse" /> -->
       <router-view></router-view>
     </main>
   </div>
@@ -11,14 +10,12 @@
 <script>
 import Bus from '@/bus';
 import Nav from './nav';
-import Header from './header';
 
 export default {
   name: 'Layout',
 
   components: {
     Nav,
-    Header,
   },
 
   data() {
@@ -30,9 +27,6 @@ export default {
   created() {
     Bus.$on('toggleNav', () => this.isCollapse = !this.isCollapse);
   },
-
-  methods: {
-  },
 }
 </script>
 
@@ -41,21 +35,17 @@ export default {
 
 div.container {
   position: relative;
-  padding-left: 240px;
+  padding-left: $navWidth;
   transition: all ease .3s;
 
   nav {
     position: absolute;
     left: 0;
     top: 0;
-    width: 240px;
+    width: $navWidth;
     height: 100%;
-    // background: #2c3e50;
-    // color: #fff;
     overflow: auto;
-
     box-shadow: $shadow;
-
     transition: all ease .3s;
   }
 

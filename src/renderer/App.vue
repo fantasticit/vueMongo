@@ -1,8 +1,7 @@
 <template>
-  <div id="app">
-    <!-- <div class="helper"> -->
-      <!-- <pre>{{ this.$router.currentRoute.path }}</pre> -->
-    <!-- </div> -->
+  <div id="app" :style="{
+    'font-size': fontSize + 'px'
+  }" :class="theme">
     <Header />
     <router-view class="view"></router-view>
     <Footer />
@@ -24,8 +23,10 @@ export default {
 
   computed: {
     ...mapState({
-      connections: state => state.connect.connections
-    })
+      connections: state => state.connect.connections,
+      fontSize: state => state.setting.fontSize,
+      theme: state => state.setting.theme,
+    }),
   },
 }
 </script>
@@ -37,10 +38,13 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f3f3f3;
+  background: #ffffff;
+
+  color: $text-color;
+  font-size: $text-size;
 
   .view {
-    height: calc(100% - 85px);
+    height: calc(100% - 80px);
   }
 }
 </style>

@@ -13,7 +13,7 @@
       <el-button type="primary" size="mini" @click="gotoUser">用户管理</el-button>
     </div>
 
-    <div class="collections" v-loading.lock="loading">
+    <div class="content" v-loading.lock="loading">
       <el-table
         :data="data"
         stripe
@@ -148,50 +148,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page {
-  height: 100%;
-  padding: 15px;
+@import '../../theme/index.scss';
+
+.toolbar,
+.content {
+  padding: 0 $padding !important;
+}
+
+.toolbar {
+  justify-content: flex-end !important;
 }
 
 .content {
-  padding: 7.5px 0;
-}
+  height: calc(100% - 95px) !important;
 
-div.breadcrumb,
-div.toolbar {
-  height: 30px;
-  display: flex;
-  align-items: center;
-}
+  /deep/ .table-expand {
+    font-size: 0;
 
-div.toolbar {
-  justify-content: flex-end;
-}
+    label {
+      width: 100px;
+      color: #99a9bf;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
 
-.collections {
-  height: calc(100% - 60px);
-  padding: 15px 0;
-
-  /deep/ .el-table {
-    height: 100%;
-  }
-}
-
-/deep/ .table-expand {
-  font-size: 0;
-
-  label {
-    width: 100px;
-    color: #99a9bf;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-
-  .el-form-item {
-    margin-right: 0;
-    margin-bottom: 0;
-    width: 50%;
+    .el-form-item {
+      margin-right: 0;
+      margin-bottom: 0;
+      width: 50%;
+    }
   }
 }
 </style>

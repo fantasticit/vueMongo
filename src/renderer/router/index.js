@@ -11,6 +11,11 @@ export default new Router({
       component: require('@/views/layout').default,
       children: [
         {
+          path: '',
+          name: 'Home',
+          component: require('@/views/home').default,
+        },
+        {
           path: 'db/:db',
           name: 'DB',
           component: require('@/views/db/collection.vue').default,

@@ -37,7 +37,7 @@
       </el-dialog>
     </div>
 
-    <div class="users">
+    <div class="content">
       <el-table
         ref="multipleTable"
         :data="users"
@@ -176,27 +176,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page {
-  height: 100%;
-  padding: 15px;
+@import '../../theme/index.scss';
+
+.toolbar,
+.content {
+  padding: 0 $padding !important;
 }
 
-div.breadcrumb,
-div.toolbar {
-  height: 30px;
-  display: flex;
-  align-items: center;
-}
-
-div.toolbar {
-  justify-content: space-between;
-  padding: 7.5px 0;
-}
-
-div.users {
-  height: calc(100% - 75px);
-  padding: 15px 0;
-
+.content {
+  height: calc(100% - 95px) !important;
+  
   /deep/ .el-table {
     height: 100%;
   }

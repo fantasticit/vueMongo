@@ -18,9 +18,9 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 900,
+    width: 1400,
+    height: 1000,
     useContentSize: true,
-    width: 1600
   })
 
   mainWindow.loadURL(winURL)
@@ -51,7 +51,7 @@ app.on('activate', () => {
 
 // const { Menu } = require('electron')
   
-// const template = [
+// const template = []
 //   {
 //     label: 'Edit',
 //     submenu: [

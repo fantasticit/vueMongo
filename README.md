@@ -4,10 +4,22 @@
 
 <h2 align="center">MongoVisual</h2>
 
-![预览图](http://p39p1kvxn.bkt.clouddn.com/%E9%80%89%E5%8C%BA_028.png)
+### 使用示例
 
-### 开发目标
-计划开发一款`mongodb`可视化管理应用。
+- 连接数据库
+![连接数据库](./example/connect.png)
+
+- 数据库统计
+![数据库统计](./example/collection.png)
+
+- 数据库用户管理
+![数据库用户管理](./example/user.png)
+
+- 集合查询
+![集合查询](./example/colection.png)
+
+- 文档查询编辑
+![文档](./example/document.png)
 
 ### 进度管理
 - [x] 数据库连接
@@ -23,5 +35,3 @@
 - [x] 文档更新
 - [x] 文档插入
 - [x] 文档删除
-
-待添加...

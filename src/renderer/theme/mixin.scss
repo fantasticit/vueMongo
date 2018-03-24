@@ -10,3 +10,19 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+@mixin scrollbar() {
+  &::-webkit-scrollbar {
+    width: $scrollbarWidth;
+    background: #F7F6F6;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 0px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background:#E2E2E2;
+  }
+}

@@ -2,26 +2,40 @@
 $primary:#69b241;
 $info: #909399;
 $success: #67c23a;
-$waring: #e6a23c;
+$warning: #e6a23c;
 $danger: #f56c6c;
 
 // 边距
 $padding: 15px;
-$margin: 15px;
+$margin: 7.5px;
 
 // 边框
-$border: #ccc;
+$border: #DBDBDB;
+$dark-border: #5A5A5A ;
+
+// 背景
+$bg: #FAFAFA;
+$dark-bg: #333333;
+$dark-bg-pre: #282828;
+$dark-bg-active: #464646;
 
 // 字体
-$text-size: 14px;
+$text-size: 16px;
 $text-color: #303133;
+$light-text-color: #fff;
 
 // 阴影
 $shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 
+// 滚动条宽度
+$scrollbarWidth: 6px;
+
+// 侧边栏宽度
+$navWidth: 240px;
+
 // 其他
-$bg-header: #515151;
+$bg-header: #464646;
 
 // 菜单项激活样式
 $menu-active-color: $primary;
-$menu-active-bg: #EAEAEA;
+$menu-active-bg: #eaeaea;

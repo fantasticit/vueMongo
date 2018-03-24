@@ -2,17 +2,9 @@
   <nav>
     <div class="menu-container">
       <p class="title">
-        <el-popover
-          ref="pop"
-          placement="top-start"
-          title="提示"
-          width="120"
-          trigger="hover"
-          content="点击连接按钮后，成功连接的数据库会展示在下方">
-        </el-popover>
-        <span v-popover:pop>数据库连接</span>
+        <span>数据库连接</span>
       </p>
-      <div class="">
+      <div>
         <Navmenun v-for="(item, i) in connections" :key="i" :data="item" />
       </div>
     </div>
@@ -35,19 +27,6 @@ export default {
       connections: state => state.connect.connections
     })
   },
-
-  data () {
-    return {
-      defaultProps: {
-        children: 'collections',
-        label: 'name',
-      }
-    }
-  },
-
-  methods: {
-    
-  },
 }
 </script>
 
@@ -64,16 +43,15 @@ nav {
   }
 
   .title {
-    // background: #334556;
-    height: 40px;
-    line-height: 40px;
+    height: 39px;
+    line-height: 39px;
     padding-left: 20px;
   }
 
   .menu-container {
     height: calc(100% - 60px);
     overflow: hidden;
-    font-size: 16px;
+    font-size: 1em;
 
     > div {
       height: calc(100% - 40px);

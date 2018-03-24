@@ -13,7 +13,7 @@
     <!-- E 面包屑 -->
 
     <!-- S 查询工具条 -->
-    <div class="filter">
+    <div class="toolbar">
       <ul>
         <li>
           <el-button
@@ -238,5 +238,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './style.scss';
+.json-editor {
+  width: 400px;
+  height: 400px;
+}
 </style>

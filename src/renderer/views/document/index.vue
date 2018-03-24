@@ -1,14 +1,8 @@
 <template>
   <div class="page" v-loading.lock="loading">
     <div class="toolbar">
-      <el-row>
-        <el-col :span="12">
-          <el-button size="small" type="success" @click="goback">返回</el-button>
-        </el-col>
-        <el-col :span="12" class="text-right">
-          <el-button size="small" type="primary" @click="save">保存</el-button>
-        </el-col>
-      </el-row>
+      <el-button size="small" type="success" @click="goback">返回</el-button>
+      <el-button size="small" type="primary" @click="save">保存</el-button>
     </div>
 
     <div class="editor">
@@ -104,6 +98,7 @@ export default {
 div.toolbar {
   height: 30px;
   margin-bottom: 15px;
+  padding: 0 !important;
 }
 
 .text-right {

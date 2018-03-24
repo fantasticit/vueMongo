@@ -8,9 +8,11 @@ import 'highlight.js/styles/googlecode.css';
 import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
 import './components/icon/index';
 import Http from './api/index';
+import SplitPanel from './components/split-panel';
 
 
 Vue.use(ElementUI);
+Vue.component('SplitPanel', SplitPanel);
 Vue.component(CollapseTransition.name, CollapseTransition);
 Vue.use(Http);
 
