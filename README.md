@@ -10,13 +10,13 @@
 ![连接数据库](./example/connect.png)
 
 - 数据库统计
-![数据库统计](./example/collection.png)
+![数据库统计](./example/db.png)
 
 - 数据库用户管理
 ![数据库用户管理](./example/user.png)
 
 - 集合查询
-![集合查询](./example/colection.png)
+![集合查询](./example/collection.png)
 
 - 文档查询编辑
 ![文档](./example/document.png)
