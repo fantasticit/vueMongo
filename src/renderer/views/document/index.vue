@@ -1,5 +1,5 @@
 <template>
-  <div class="page" v-loading.lock="loading">
+  <div class="page">
     <div class="toolbar">
       <el-button size="small" type="success" @click="goback">返回</el-button>
       <el-button size="small" type="primary" @click="save">保存</el-button>
@@ -41,7 +41,6 @@ export default {
 
   data() {
     return {
-      loading: false,
       originData: {}, // 原本的数据，用于比对是否改动了数据
       data: {},
       isSaved: false,
@@ -54,7 +53,7 @@ export default {
 
   methods: {
     async fetchDocument() {
-      this.loading = true;
+      this.$loading.start();
       try {
         const { db, collection, document } = this.$router.currentRoute.params;
         const data = await this.$http.query.findById(db, collection, document);
@@ -63,12 +62,12 @@ export default {
       } catch (err) {
         this.$message.error(err.message)
       } finally {
-        this.loading = false;
+        this.$loading.close();
       }
     },
 
     async save() {
-      this.loading = true;
+      this.$loading.start();
       try {
         const { db, collection, document } = this.$router.currentRoute.params;
         await this.$http.query.updateById(db, collection, document, this.data);
@@ -77,7 +76,7 @@ export default {
       } catch (err) {
         this.$message.error(err.message);
       } finally {
-        this.loading = false;
+        this.$loading.close();
       }
     },
 

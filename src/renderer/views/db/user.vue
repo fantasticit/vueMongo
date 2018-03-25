@@ -97,6 +97,7 @@ export default {
   methods: {
     async fetchUsers() {
       this.showModal = false;
+      this.$loading.start();
 
       try {
         const data = await this.$http.user.getUsers(this.$route.params.db);
@@ -106,6 +107,8 @@ export default {
         this.users = data;
       } catch (err) {
         this.$message.error(err.message);
+      } finally {
+        this.$loading.close();
       }
     },
 

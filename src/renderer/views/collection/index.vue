@@ -164,8 +164,8 @@ export default {
 
   methods: {
     async fetchData() {
-      this.loading = true;
-      this.data = [];
+      this.$loading.start();
+      // this.data = [];
       this.showQueryModal = false;
 
       try {
@@ -176,7 +176,7 @@ export default {
       } catch (err) {
         this.$message.error(err.message)
       } finally {
-        this.loading = false;
+        this.$loading.close();
       }
     },
 
@@ -205,12 +205,12 @@ export default {
       }
     },
 
-    async deleteDocument(id) {
+    async deleteDocument({ id, index }) {
       const { db, collection } = this.$route.params;
 
       try {
         await this.$http.query.deleteById(db, collection, id);
-        this.fetchData(); // 删除数据后重新获取数据
+        this.fetchData();
         this.newDocument = {};
       } catch (err) {
         this.$message.error(err.message);

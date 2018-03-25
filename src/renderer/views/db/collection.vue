@@ -13,7 +13,7 @@
       <el-button type="primary" size="mini" @click="gotoUser">用户管理</el-button>
     </div>
 
-    <div class="content" v-loading.lock="loading">
+    <div class="content">
       <el-table
         :data="data"
         stripe
@@ -58,12 +58,13 @@
 </template>
 
 <script>
+const jsonStringify = require('json-pretty');
+
 export default {
   name: 'DB',
 
   data() {
     return {
-      loading: false,
       data: [],
     }
   },
@@ -80,7 +81,7 @@ export default {
 
   methods: {
     async fetchData() {
-      this.loading = true;
+      this.$loading.start();
 
       try {
         const data = await this.$http.collection.getCollections(this.$route.params.db);
@@ -88,7 +89,7 @@ export default {
       } catch (err) {
         this.$message.error(err.message)
       } finally {
-        this.loading = false;
+        this.$loading.close();
       }
     },
 
@@ -114,7 +115,6 @@ export default {
         }
 
         const fs = require('fs');
-        const jsonStringify = require('json-pretty');
 
         fs.writeFile(path, jsonStringify(data.docs), err => {
           if (err) {
