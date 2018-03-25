@@ -46,4 +46,6 @@ VueMongo是一款跨平台的mongoDB图形化管理应用。界面使用 `electr
 - 文档查询编辑
 ![文档](./pictures/document.png)
 
+## LICENSE
+[The MIT LICENSE]https://github.com/mvpzx/vueMongo/blob/master/LICENSE
 
