@@ -3,8 +3,8 @@
 </p>
 
 <h2 align="center"></h2>
-VueMongo是一款跨平台的mongoDB图形化管理应用。界面使用`electron-vue`和`ElementUI`构建，数据库连接及相关服务由NodeJs`Koa`
-框架支持。
+VueMongo是一款跨平台的mongoDB图形化管理应用。界面使用 `electron-vue` 和 `ElementUI` 构建，数据库连接及相关服务由 NodeJs `Koa`
+ 框架支持。
 
 ### 安装使用
 1. 拉取代码： `git@github.com:mvpzx/vueMongo.git`
