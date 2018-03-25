@@ -23,6 +23,8 @@
 <script>
 import Hljs from 'highlight.js';
 
+const jsonStringify = require('json-pretty');
+
 export default {
   name: 'DocItem',
 
@@ -45,11 +47,15 @@ export default {
   },
 
   mounted() {
-    this.highlight();
+    if (JSON.stringify(this.data).length <= 200000) {
+      this.highlight();
+    }
   },
 
   updated() {
-    this.highlight();
+    if (JSON.stringify(this.data).length <= 200000) {
+      this.highlight();
+    }
   },
 
   methods: {
@@ -76,14 +82,14 @@ export default {
         this.$message.info('未能找到 _id 属性，无法删除');
         return
       } else {
-        this.$emit('delete', id);
+        this.$emit('delete', { id, index: this.index });
       }
     },
 
     copyToClipboard() {
       try {
         const dummyTextArea = document.createElement('textarea')
-        dummyTextArea.textContent = JSON.stringify(this.data)
+        dummyTextArea.textContent = jsonStringify(this.data)
         document.body.appendChild(dummyTextArea)
         dummyTextArea.select()
         document.execCommand('copy')

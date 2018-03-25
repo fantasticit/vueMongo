@@ -36,10 +36,10 @@
           <el-tab-pane label="主题" name="theme">
             <p class="text-center">请选择一个主题</p>
             <div class="themes">
-              <div @click="themeLight()">
+              <div @click="themeLight()" :class="{ 'is-active': !theme }">
                 <img src="./light.png" alt="">
               </div>
-              <div @click="themeDark()">
+              <div @click="themeDark()" :class="{ 'is-active': theme }">
                 <img src="./dark.png" alt="">
               </div>
             </div>
@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Bus from '@/bus';
 import Logger from './logger.vue';
 
@@ -65,6 +66,12 @@ export default {
 
   components: {
     Logger,
+  },
+
+  computed: {
+    ...mapState({
+      theme: state => state.setting.theme,
+    }),
   },
 
   data() {
@@ -160,7 +167,7 @@ ul {
   li.collapse {
     &:hover {
       &::before {
-        content: '展开侧边栏';
+        content: '收起侧边栏';
       }
     }
   }
@@ -168,7 +175,7 @@ ul {
   li.collapse.is-active {
     &:hover {
       &::before {
-        content: '收起侧边栏';
+        content: '展开侧边栏';
       }
     }
   }
@@ -199,6 +206,10 @@ p.text-center {
       width: 100%;
       height: 100%;
     }
+  }
+
+  >div.is-active {
+    border: 2px solid $warning;
   }
 }
 </style>

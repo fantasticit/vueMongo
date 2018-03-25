@@ -1,16 +1,25 @@
+const zlib = require('zlib');
 const Koa = require('koa');
 const cors = require('koa2-cors');
-// const cache = require('koa-redis-cache');
 const bodyParser = require('koa-bodyparser');
 const app = new Koa();
 
 app.controller = require('./controller');
 const withRouter = require('./router');
 
-// app.use(cache({
-//   expire: 60,
-//   routes: ['/index']
-// }))
+// gzip
+app.use( async (ctx, next) => {
+  await next();
+
+  let body = ctx.body;
+  if (!body) {
+    return
+  }
+
+  body = JSON.stringify(body);
+  ctx.set('Content-Encoding', 'gzip');
+  ctx.body = zlib.gzipSync(body);
+});
 app.use(cors());
 // 错误处理中间件
 app.use(async (ctx, next) => {
@@ -26,6 +35,6 @@ app.use(bodyParser());
 
 withRouter(app);
 
-app.listen(5000, () => {
-  console.log(`Server is running at http://localhost:${5000}`)
+app.listen(12345, () => {
+  console.log(`Server is running at http://localhost:${12345}`)
 });

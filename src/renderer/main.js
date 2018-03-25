@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import 'highlight.js/styles/googlecode.css';
 import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
 import './components/icon/index';
+import Loading from './components/loading';
 import Http from './api/index';
 import SplitPanel from './components/split-panel';
 
@@ -15,6 +16,8 @@ Vue.use(ElementUI);
 Vue.component('SplitPanel', SplitPanel);
 Vue.component(CollapseTransition.name, CollapseTransition);
 Vue.use(Http);
+
+Vue.prototype.$loading = Loading;
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.config.productionTip = false
