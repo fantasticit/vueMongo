@@ -165,7 +165,7 @@ export default {
   methods: {
     async fetchData() {
       this.$loading.start();
-      // this.data = [];
+      this.data = [];
       this.showQueryModal = false;
 
       try {
