@@ -165,7 +165,11 @@ export default {
   methods: {
     async fetchData(resetData = true) {
       this.$loading.start();
+<<<<<<< HEAD
       resetData && (this.data = []);
+=======
+      this.data = [];
+>>>>>>> 0faa9f0fe917092e535e0f26e52e23d40d1542c4
       this.showQueryModal = false;
 
       try {
