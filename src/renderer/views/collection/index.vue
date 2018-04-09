@@ -163,9 +163,13 @@ export default {
 
 
   methods: {
-    async fetchData() {
+    async fetchData(resetData = true) {
       this.$loading.start();
+<<<<<<< HEAD
+      resetData && (this.data = []);
+=======
       this.data = [];
+>>>>>>> 0faa9f0fe917092e535e0f26e52e23d40d1542c4
       this.showQueryModal = false;
 
       try {
@@ -210,7 +214,7 @@ export default {
 
       try {
         await this.$http.query.deleteById(db, collection, id);
-        this.fetchData();
+        this.fetchData(false);
         this.newDocument = {};
       } catch (err) {
         this.$message.error(err.message);
