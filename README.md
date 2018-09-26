@@ -8,7 +8,7 @@ VueMongo是一款跨平台的mongoDB图形化管理应用。界面使用 `electr
  框架支持。
 
 ### 安装使用
-1. 拉取代码： `git@github.com:mvpzx/vueMongo.git`
+1. 拉取代码： `git clone git@github.com:justemit/vueMongo.git`
 2. 安装依赖： `npm install`
 3. 运行应用： `npm run dev`
 
